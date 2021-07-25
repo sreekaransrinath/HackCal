@@ -251,7 +251,7 @@
                         rgba(46, 146, 201, 0.161) 0%,
                         rgba(224, 108, 58, 0.212) 100%
                     ),
-                    url("assets/images/bg.svg");
+                    url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20343.5%20235.5%22%3E%3Cstyle%3E.st0%7Bfill:none;stroke:rgba(255,255,255,0.125);stroke-width:1.5px%7D%3C/style%3E%3Cpath%20d=%22M60.5%2082.8C67.7%2061.4%2099.3%2049.4%20131%2056s136.2%2080.7%2092.7%20118.2C204.2%20191.1%20190%20179.6%2095%20159c-31.6-6.8-41.7-54.8-34.5-76.2z%22%20class=%22st0%22%20vector-effect=%22non-scaling-stroke%22/%3E%3Cpath%20d=%22M66.1%20101c1.9-22.3%2029.8-38.7%2062.3-36.6%2032.5%202.1%20151.8%2060.9%20118.4%20104.3-15%2019.5-31.6%2010.2-128.9%203.1-32.5-2.4-53.8-48.6-51.8-70.8z%22%20class=%22st0%22%20vector-effect=%22non-scaling-stroke%22/%3E%3Cpath%20d=%22M91.7%20106.3c-5.6-22.2%2015.6-43.8%2047.2-48.1s165%2029.8%20147.6%2078.9c-7.8%2022.1-26.7%2016.2-121.9%2028.5-31.6%203.9-67.3-37.1-72.9-59.3z%22%20class=%22st0%22%20vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E");
                 background-size: 512px, cover, cover;
                 background-position: center, 0% 0%, center;
                 background-repeat: repeat, repeat, no-repeat;
@@ -952,8 +952,8 @@
                 }
             }
         </style>
-        <noscript
-            ><style>
+        <noscript>
+            <style>
                 body {
                     overflow: auto !important;
                 }
@@ -978,8 +978,8 @@
                     -ms-filter: none !important;
                     filter: none !important;
                 }
-            </style></noscript
-        >
+            </style>
+        </noscript>
     </head>
     <body class="is-loading">
         <svg
@@ -1042,51 +1042,60 @@
                         MLH Event again.
                     </p>
                     <ul id="buttons03" class="buttons">
-                        <li>
-                            <a href="https://domain.ext/path" class="button n01"
-                                ><svg><use xlink:href="#icon-969"></use></svg
-                                ><span class="label">Event Name</span></a
+                        <li
+                            id="hackathon-calendar-template"
+                            style="display: none"
+                        >
+                            <a
+                                href="https://domain.ext/path"
+                                class="button n01"
                             >
+                                <svg><use xlink:href="#icon-969"></use></svg>
+                                <span class="label">Event Name</span>
+                            </a>
                         </li>
                     </ul>
                     <ul id="buttons01" class="buttons">
                         <li>
-                            <a href="https://domain.ext/path" class="button n01"
-                                ><svg><use xlink:href="#icon-9e2"></use></svg
-                                ><span class="label">Download All</span></a
+                            <a
+                                href="https://domain.ext/path"
+                                class="button n01"
                             >
+                                <svg><use xlink:href="#icon-9e2"></use></svg>
+                                <span class="label">Download All</span>
+                            </a>
                         </li>
                     </ul>
                     <ul id="icons01" class="icons">
                         <li>
-                            <a class="n01" href="https://domain.ext/path"
-                                ><svg><use xlink:href="#icon-905"></use></svg
-                                ><span class="label">Twitter</span></a
-                            >
+                            <a class="n01" href="https://domain.ext/path">
+                                <svg><use xlink:href="#icon-905"></use></svg>
+                                <span class="label">Twitter</span>
+                            </a>
                         </li>
                         <li>
-                            <a class="n02" href="https://domain.ext/path"
-                                ><svg><use xlink:href="#icon-90a"></use></svg
-                                ><span class="label">Email</span></a
-                            >
+                            <a class="n02" href="https://domain.ext/path">
+                                <svg><use xlink:href="#icon-90a"></use></svg>
+                                <span class="label">Email</span>
+                            </a>
                         </li>
                         <li>
-                            <a class="n03" href="https://domain.ext/path"
-                                ><svg><use xlink:href="#icon-910"></use></svg
-                                ><span class="label">Instagram</span></a
-                            >
+                            <a class="n03" href="https://domain.ext/path">
+                                <svg><use xlink:href="#icon-910"></use></svg>
+                                <span class="label">Instagram</span>
+                            </a>
                         </li>
                         <li>
-                            <a class="n04" href="https://domain.ext/path"
-                                ><svg><use xlink:href="#icon-907"></use></svg
-                                ><span class="label">GitHub</span></a
-                            >
+                            <a class="n04" href="https://domain.ext/path">
+                                <svg><use xlink:href="#icon-907"></use></svg>
+                                <span class="label">GitHub</span>
+                            </a>
                         </li>
                         <li>
-                            <a class="n05" href="https://domain.ext/path"
-                                ><svg><use xlink:href="#icon-90b"></use></svg
-                                ><span class="label">LinkedIn</span></a
-                            >
+                            <a class="n05" href="https://domain.ext/path">
+                                <svg><use xlink:href="#icon-90b"></use></svg>
+                                <span class="label">LinkedIn</span>
+                            </a>
                         </li>
                     </ul>
                     <p id="credits">
@@ -1650,6 +1659,28 @@
                     })();
                 }
             })();
+        </script>
+
+        <script>
+            async function populateHackathonData() {
+                let hackathonData = await fetch("./events").then((e) =>
+                    e.json()
+                );
+                let templateButton = $("#hackathon-calendar-template");
+                let downloadAllButton = $("#buttons01 li");
+                for (let hackathon of hackathonData) {
+                    let button;
+                    if (hackathon == "__all__") button = downloadAllButton;
+                    else {
+                        button = templateButton.cloneNode(true);
+                        button.querySelector(".label").innerText = hackathon;
+                        templateButton.parentElement.appendChild(button);
+                    }
+                    button.querySelector("a").href =
+                        "data:text/calendar;base64," + hackathonData[hackathon];
+                }
+            }
+            populateEventData();
         </script>
     </body>
 </html>
