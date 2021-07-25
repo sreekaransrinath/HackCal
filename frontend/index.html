@@ -1048,6 +1048,7 @@
                         >
                             <a
                                 href="https://domain.ext/path"
+                                download="event.ics"
                                 class="button n01"
                             >
                                 <svg><use xlink:href="#icon-969"></use></svg>
@@ -1666,21 +1667,26 @@
                 let hackathonData = await fetch("./events").then((e) =>
                     e.json()
                 );
-                let templateButton = $("#hackathon-calendar-template");
-                let downloadAllButton = $("#buttons01 li");
-                for (let hackathon of hackathonData) {
+                let templateButton = document.querySelector("#hackathon-calendar-template");
+                let downloadAllButton = document.querySelector("#buttons01 li");
+                for (let hackathon in hackathonData) {
                     let button;
-                    if (hackathon == "__all__") button = downloadAllButton;
+                    if (hackathon == "ALL_CALENDARS"){
+                        button = downloadAllButton;
+                        button.querySelector("a").download = "All Hackathons.ics";
+                    }
                     else {
                         button = templateButton.cloneNode(true);
+                        button.removeAttribute("style");
                         button.querySelector(".label").innerText = hackathon;
+                        button.querySelector("a").download = hackathon + ".ics";
                         templateButton.parentElement.appendChild(button);
                     }
                     button.querySelector("a").href =
                         "data:text/calendar;base64," + hackathonData[hackathon];
                 }
             }
-            populateEventData();
+            populateHackathonData();
         </script>
     </body>
 </html>
