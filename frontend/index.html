@@ -354,7 +354,7 @@
                 border-radius: inherit;
                 padding: 3rem 3rem;
                 max-width: 100%;
-                width: 30rem;
+                width: 50rem;
             }
             #main > .inner > * {
                 margin-top: 1.25rem;
@@ -521,19 +521,31 @@
                 vertical-align: middle;
                 white-space: nowrap;
             }
-            #buttons03 {
+            .button-list {
                 width: calc(100% + 1.25rem);
                 margin-left: -0.625rem;
             }
-            #buttons03 li {
+            .button-list li {
                 display: inline-block;
                 vertical-align: middle;
+                text-align: right;
                 max-width: calc(100% - 1.25rem);
                 margin: 0.625rem;
             }
-            #buttons03 li a {
+            .button-list li a,
+            summary {
+                background-color: #40a376;
+                color: #ffffff;
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(95, 100, 217, 0.769) 0%,
+                    rgba(64, 163, 118, 0.008) 75%
+                );
+                background-position: 0% 0%;
+                background-repeat: repeat;
+                background-size: cover;
                 display: flex;
-                width: 30rem;
+                width: 44rem;
                 height: 3.75rem;
                 line-height: 3.75rem;
                 vertical-align: middle;
@@ -542,16 +554,8 @@
                 font-family: "Sora", sans-serif;
                 font-weight: 300;
                 border-radius: 2rem;
-                -moz-justify-content: flex-end;
-                -webkit-justify-content: flex-end;
-                -ms-justify-content: flex-end;
-                justify-content: flex-end;
-                -moz-flex-direction: row-reverse;
-                -webkit-flex-direction: row-reverse;
-                -ms-flex-direction: row-reverse;
-                flex-direction: row-reverse;
             }
-            #buttons03 li a svg {
+            .button-list li a svg {
                 display: block;
                 -moz-transition: fill 0.25s ease;
                 -webkit-transition: fill 0.25s ease;
@@ -572,7 +576,14 @@
                 margin-right: calc(-0.125em + 0rem);
                 margin-left: 0.5em;
             }
-            #buttons03 li a .label {
+            summary {
+                cursor: pointer;
+                transition: all 100ms rease;
+            }
+            .button-list li a .label,
+            summary .label {
+                display: table;
+                white-space: pre-wrap;
                 direction: var(--site-language-direction);
                 -moz-flex-grow: 1;
                 -webkit-flex-grow: 1;
@@ -585,30 +596,33 @@
                 width: 100%;
                 text-align: left;
             }
-            #buttons03 .button {
+            .button-list .button {
                 color: #ffffff;
                 border: solid 1px #40a376;
             }
-            #buttons03 .button:hover {
+            .button-list .button:hover {
                 color: #30d98b !important;
                 border-color: #30d98b !important;
             }
-            #buttons03 .button:hover svg {
+            .button-list .button:hover svg {
                 fill: #30d98b !important;
             }
-            #buttons01 {
+            .button-list {
                 width: calc(100% + 1.25rem);
                 margin-left: -0.625rem;
             }
-            #buttons01 li {
+            .button-list li {
                 display: inline-block;
                 vertical-align: middle;
                 max-width: calc(100% - 1.25rem);
                 margin: 0.625rem;
             }
-            #buttons01 li a {
+            .button-list li a:not(#download-all-button) {
+                width: 40rem;
+            }
+            .button-list li a {
                 display: flex;
-                width: 30rem;
+                width: 50rem;
                 height: 3.75rem;
                 line-height: 3.75rem;
                 vertical-align: middle;
@@ -626,7 +640,7 @@
                 -ms-flex-direction: row-reverse;
                 flex-direction: row-reverse;
             }
-            #buttons01 li a svg {
+            .button-list li a svg {
                 display: block;
                 -moz-transition: fill 0.25s ease;
                 -webkit-transition: fill 0.25s ease;
@@ -647,20 +661,7 @@
                 margin-right: calc(-0.125em + 0rem);
                 margin-left: 0.5em;
             }
-            #buttons01 li a .label {
-                direction: var(--site-language-direction);
-                -moz-flex-grow: 1;
-                -webkit-flex-grow: 1;
-                -ms-flex-grow: 1;
-                flex-grow: 1;
-                -moz-flex-shrink: 1;
-                -webkit-flex-shrink: 1;
-                -ms-flex-shrink: 1;
-                flex-shrink: 1;
-                width: 100%;
-                text-align: left;
-            }
-            #buttons01 .button {
+            .button-list .button {
                 background-color: #40a376;
                 color: #ffffff;
                 background-image: linear-gradient(
@@ -672,7 +673,7 @@
                 background-repeat: repeat;
                 background-size: cover;
             }
-            #buttons01 .button:hover {
+            .button-list .button:hover {
                 background-color: #30d98b !important;
             }
             .icons {
@@ -823,18 +824,18 @@
                     font-size: 0.8em;
                     line-height: 1.5;
                 }
-                #buttons03 li a {
+                .button-list li a {
                     font-size: 1.125em;
                     letter-spacing: 0rem;
                 }
-                #buttons03 li a svg {
+                .button-list li a svg {
                     width: 1.625em;
                 }
-                #buttons01 li a {
+                .button-list li a {
                     font-size: 1.125em;
                     letter-spacing: 0rem;
                 }
-                #buttons01 li a svg {
+                .button-list li a svg {
                     width: 1.625em;
                 }
                 #icons01 {
@@ -851,44 +852,44 @@
                     margin-top: 1.09375rem;
                     margin-bottom: 1.09375rem;
                 }
-                #buttons03 {
+                .button-list {
                     margin-left: 0;
                     width: 100%;
                     padding: 0.625rem 0;
                 }
-                #buttons03 li {
+                .button-list li {
                     max-width: 100%;
                     display: block;
                     margin: 1.25rem 0;
                 }
-                #buttons03 li:first-child {
+                .button-list li:first-child {
                     margin-top: 0;
                 }
-                #buttons03 li:last-child {
+                .button-list li:last-child {
                     margin-bottom: 0;
                 }
-                #buttons03 li a {
+                .button-list li a {
                     display: inline-flex;
                     width: 100%;
                     max-width: 32rem;
                 }
-                #buttons01 {
+                .button-list {
                     margin-left: 0;
                     width: 100%;
                     padding: 0.625rem 0;
                 }
-                #buttons01 li {
+                .button-list li {
                     max-width: 100%;
                     display: block;
                     margin: 1.25rem 0;
                 }
-                #buttons01 li:first-child {
+                .button-list li:first-child {
                     margin-top: 0;
                 }
-                #buttons01 li:last-child {
+                .button-list li:last-child {
                     margin-bottom: 0;
                 }
-                #buttons01 li a {
+                .button-list li a {
                     display: inline-flex;
                     width: 100%;
                     max-width: 32rem;
@@ -912,6 +913,7 @@
                 }
                 #main > .inner > .full:last-child {
                     margin-bottom: -2.25rem !important;
+                    margin-bottom: -2.25rem !important;
                 }
                 #main > .inner > .full.screen {
                     margin-left: -50vw;
@@ -925,21 +927,12 @@
                 #credits {
                     font-size: 0.8em;
                 }
-                #buttons03 {
+                .button-list {
                     width: 100%;
                     margin-left: 0;
                     padding: 0.46875rem 0;
                 }
-                #buttons03 li {
-                    max-width: 100%;
-                    margin: 0.9375rem 0;
-                }
-                #buttons01 {
-                    width: 100%;
-                    margin-left: 0;
-                    padding: 0.46875rem 0;
-                }
-                #buttons01 li {
+                .button-list li {
                     max-width: 100%;
                     margin: 0.9375rem 0;
                 }
@@ -1041,25 +1034,12 @@
                         Your one-stop shop to make sure you never miss another
                         MLH Event again.
                     </p>
-                    <ul id="buttons03" class="buttons">
-                        <li
-                            id="hackathon-calendar-template"
-                            style="display: none"
-                        >
-                            <a
-                                href="https://domain.ext/path"
-                                download="event.ics"
-                                class="button n01"
-                            >
-                                <svg><use xlink:href="#icon-969"></use></svg>
-                                <span class="label">Event Name</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul id="buttons01" class="buttons">
+                    <ul class="button-list buttons"></ul>
+                    <ul class="button-list buttons">
                         <li>
                             <a
-                                href="https://domain.ext/path"
+                                id="download-all-button"
+                                href="#"
                                 class="button n01"
                             >
                                 <svg><use xlink:href="#icon-9e2"></use></svg>
@@ -1663,29 +1643,80 @@
         </script>
 
         <script>
-            async function populateHackathonData() {
-                let hackathonData = await fetch("./events").then((e) =>
-                    e.json()
-                );
-                let templateButton = document.querySelector("#hackathon-calendar-template");
-                let downloadAllButton = document.querySelector("#buttons01 li");
-                for (let hackathon in hackathonData) {
-                    let button;
-                    if (hackathon == "ALL_CALENDARS"){
-                        button = downloadAllButton;
-                        button.querySelector("a").download = "All Hackathons.ics";
-                    }
-                    else {
-                        button = templateButton.cloneNode(true);
-                        button.removeAttribute("style");
-                        button.querySelector(".label").innerText = hackathon;
-                        button.querySelector("a").download = hackathon + ".ics";
-                        templateButton.parentElement.appendChild(button);
-                    }
-                    button.querySelector("a").href =
-                        "data:text/calendar;base64," + hackathonData[hackathon];
+            async function populateHackathonData(){
+                let hackathonData = await fetch("./events").then(e => e.json());
+                let hackathonList = document.querySelector(".button-list");
+                for(let [name, events] of Object.entries(hackathonData)){
+                    let details = document.createElement("details");
+                    let summary = document.createElement("summary");
+                    let span = document.createElement("span");
+                    span.innerText = name;
+                    span.classList.add("label");
+                    summary.appendChild(span)
+                    details.appendChild(summary);
+                    
+                    let hackathon = createHackathon(name, events);
+                    details.appendChild(hackathon);
+                    
+                    let li = document.createElement("li");
+                    li.appendChild(details);
+                    hackathonList.appendChild(li);
                 }
+                
+                let downloadAllButton = document.querySelector("#download-all-button");
+                downloadAllButton.download = "All Events.ics";
+                let allData = (Object.values(hackathonData).map(e => Object.values(e)[0]));
+                downloadAllButton.href = createCalendar(allData);
             }
+
+            function createHackathon(hackathonName, events){
+                events["All Events"] = Object.values(events);
+                
+				let hackathon = document.createElement("ul");
+                hackathon.classList.add("buttons", "button-list");
+				for(let [name, ics] of Object.entries(events)){
+					let li = document.createElement("li");
+					li.appendChild(createEvent(hackathonName + " - " + name, ics));
+					hackathon.appendChild(li);
+				}
+				
+				return hackathon;
+			}
+
+            function createEvent(name, ics){
+				let event = document.createElement("a");
+                event.classList.add("button", "n01");
+				event.href = createCalendar(ics);
+				event.download = name + ".ics";
+				
+				let icon = document.createElementNS("http://www.w3.org/2000/svg", "use");
+				icon.setAttribute("href", "#icon-9e2");
+				
+				let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+				svg.appendChild(icon);
+				event.appendChild(svg);
+                
+                let label = document.createElement("span");
+                label.classList.add("label");
+                label.innerText = name;
+				event.appendChild(label);
+                
+				return event;
+			}
+			
+			function createCalendar(...data){
+				return "data:text/calendar;base64," +
+                    btoa(
+                        [
+                            "BEGIN:VCALENDAR",
+                            "VERSION:2.0",
+                            "PRODID:HackCal",
+                            data,
+                            "END:VCALENDAR"
+                        ].join("\n")
+                    );
+			}
+
             populateHackathonData();
         </script>
     </body>

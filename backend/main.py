@@ -8,8 +8,6 @@ import pandas as pd
 import time
 from ics import Calendar, Event
 
-import base64
-
 """
 Steps:
     - Get list of events and urls from https://mlh.io/seasons/2022/events/ and store them in a list of tuples
@@ -27,9 +25,10 @@ Steps:
 def main():
     hackathon_calendars = get_hackathon_calendars("https://mlh.io/seasons/2022/events/")
     for hackathon in hackathon_calendars:
-        hackathon_calendars[hackathon] = base64.b64encode(
-            str(hackathon_calendars[hackathon]).encode()
-        ).decode()
+        for event in hackathon_calendars[hackathon]:
+            hackathon_calendars[hackathon][event] = str(
+                hackathon_calendars[hackathon][event]
+            )
 
     print(hackathon_calendars)
 
@@ -57,7 +56,7 @@ def get_hackathon_calendars(url):
             "%Y-%m-%d %H:%M:%S %Z",
         )
 
-        calendar = Calendar()
+        calendar = {}
 
         for df in dfs:
             for i in range(df.shape[0]):
@@ -85,7 +84,7 @@ def get_hackathon_calendars(url):
                 event.end = f"{event_date} {event_end_time}"
                 event.timezone = "America/New_York"
 
-                calendar.events.add(event)
+                calendar[event_name] = event
 
         hackathon_calendars[hackathon_name] = calendar
 
