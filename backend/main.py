@@ -44,7 +44,6 @@ def get_hackathon_calendars(url):
 
         response = requests.get(hackathon_url["href"], headers={"Accept": "text/html"})
         hackathon_soup = BeautifulSoup(response.text, "html.parser")
-        dfs = pd.read_html(response.text)
 
         hackathon_name = hackathon_soup.select_one("h1").text
         hackathon_start_date = datetime.strptime(
@@ -58,33 +57,36 @@ def get_hackathon_calendars(url):
 
         calendar = {}
 
-        for df in dfs:
-            for i in range(df.shape[0]):
-                event_day = df.loc[i].at["Day (ET)"].split()[0]
-                event_time = " ".join(df.loc[i].at["ET"].split()[:-1])
-                event_name = df.loc[i].at["Event"]
-                event_dates = {
-                    "Friday": hackathon_start_date,
-                    "Saturday": hackathon_start_date + timedelta(days=1),
-                    "Sunday": hackathon_start_date + timedelta(days=2),
-                }
-                event_date = event_dates[event_day].strftime("%Y-%m-%d")
-                event_time = (
-                    datetime.strptime(event_time, "%I:%M %p").time().strftime("%H:%M")
-                )
-                event_end_time = (
-                    (datetime.strptime(event_time, "%H:%M") + timedelta(minutes=30))
-                    .time()
-                    .strftime("%H:%M")
-                )
+        if hackathon_soup.select("table"):
+            for df in pd.read_html(response.text):
+                for i in range(df.shape[0]):
+                    event_day = df.loc[i].at["Day (ET)"].split()[0]
+                    event_time = " ".join(df.loc[i].at["ET"].split()[:-1])
+                    event_name = df.loc[i].at["Event"]
+                    event_dates = {
+                        "Friday": hackathon_start_date,
+                        "Saturday": hackathon_start_date + timedelta(days=1),
+                        "Sunday": hackathon_start_date + timedelta(days=2),
+                    }
+                    event_date = event_dates[event_day].strftime("%Y-%m-%d")
+                    event_time = (
+                        datetime.strptime(event_time, "%I:%M %p")
+                        .time()
+                        .strftime("%H:%M")
+                    )
+                    event_end_time = (
+                        (datetime.strptime(event_time, "%H:%M") + timedelta(minutes=30))
+                        .time()
+                        .strftime("%H:%M")
+                    )
 
-                event = Event()
-                event.name = f"{hackathon_name} - {event_name}"
-                event.begin = f"{event_date} {event_time}"
-                event.end = f"{event_date} {event_end_time}"
-                event.timezone = "America/New_York"
+                    event = Event()
+                    event.name = f"{hackathon_name} - {event_name}"
+                    event.begin = f"{event_date} {event_time}"
+                    event.end = f"{event_date} {event_end_time}"
+                    event.timezone = "America/New_York"
 
-                calendar[event_name] = event
+                    calendar[event_name] = event
 
         hackathon_calendars[hackathon_name] = calendar
 
